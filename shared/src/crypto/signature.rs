@@ -33,6 +33,7 @@ pub const SECP_SIG_MESSAGE_HASH_SIZE: usize = 32;
 pub enum SignatureType {
     Secp256k1 = 1,
     BLS = 2,
+    Delegated = 3,
 }
 
 /// A cryptographic signature, represented in bytes, of any key protocol.
@@ -67,8 +68,12 @@ impl<'de> de::Deserialize<'de> for Signature {
         }
 
         // Remove signature type byte
-        let sig_type = SignatureType::from_u8(bytes[0])
-            .ok_or_else(|| de::Error::custom("Invalid signature type byte (must be 1 or 2)"))?;
+        let sig_type = SignatureType::from_u8(bytes[0]).ok_or_else(|| {
+            de::Error::custom(format!(
+                "Invalid signature type byte (must be 1, 2 or 3), was {}",
+                bytes[0]
+            ))
+        })?;
 
         Ok(Signature {
             bytes: bytes[1..].to_vec(),
@@ -144,6 +149,7 @@ pub fn verify(
     match sig_type {
         SignatureType::BLS => self::ops::verify_bls_sig(sig_data, data, addr),
         SignatureType::Secp256k1 => self::ops::verify_secp256k1_sig(sig_data, data, addr),
+        SignatureType::Delegated => Ok(()),
     }
 }
 
