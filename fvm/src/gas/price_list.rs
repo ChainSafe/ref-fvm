@@ -97,6 +97,10 @@ lazy_static! {
                     flat: Gas::new(16598605),
                     scale: Gas::new(26),
                 },
+                Delegated => ScalingCost {
+                    flat: Gas::new(1637292),
+                    scale: Gas::new(10),
+                },
             }
         },
         secp256k1_recover_cost: Gas::new(1637292),
