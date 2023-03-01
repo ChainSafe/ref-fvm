@@ -117,8 +117,8 @@ impl quickcheck::Arbitrary for TokenAmount {
         // a value of 128; need to constrain the corresponding length during
         // `Arbitrary` generation of `BigInt` in `TokenAmount` to below
         // MAX_BIGINT_SIZE.
-        let bigint_upper_ceiling = (BigInt::from(1) << ((crate::bigint::MAX_BIGINT_SIZE - 1) * 8));
-        TokenAmount::from_atto(BigInt::arbitrary(g) % bigint_upper_ceiling)
+        let bigint_upper_limit = (BigInt::from(1) << ((crate::bigint::MAX_BIGINT_SIZE - 1) * 8));
+        TokenAmount::from_atto(BigInt::arbitrary(g) % bigint_upper_limit)
     }
 }
 
