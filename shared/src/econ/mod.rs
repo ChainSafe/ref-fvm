@@ -111,7 +111,14 @@ impl fmt::Debug for TokenAmount {
 #[cfg(feature = "arb")]
 impl quickcheck::Arbitrary for TokenAmount {
     fn arbitrary(g: &mut quickcheck::Gen) -> Self {
-        TokenAmount::from_atto(BigInt::arbitrary(g))
+        // During serialization/deserialization, permissible length of the byte
+        // representation (plus a leading positive sign byte for non-zero
+        // values) of BigInts is currently set to a max of MAX_BIGINT_SIZE with
+        // a value of 128; need to constrain the corresponding length during
+        // `Arbitrary` generation of `BigInt` in `TokenAmount` to below
+        // MAX_BIGINT_SIZE.
+        let bigint_upper_limit = (BigInt::from(1) << ((crate::bigint::MAX_BIGINT_SIZE - 1) * 8));
+        TokenAmount::from_atto(BigInt::arbitrary(g) % bigint_upper_limit)
     }
 }
 
