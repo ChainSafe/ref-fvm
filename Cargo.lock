@@ -2442,7 +2442,7 @@ dependencies = [
  "lazy_static",
  "log",
  "minstant",
- "multihash 0.16.3",
+ "multihash 0.18.0",
  "num-derive",
  "num-traits",
  "num_cpus",
@@ -2517,7 +2517,7 @@ dependencies = [
  "async-std",
  "base64 0.21.0",
  "byteorder",
- "cid 0.8.6",
+ "cid 0.10.1",
  "colored",
  "criterion",
  "derive-getters",
@@ -2539,7 +2539,7 @@ dependencies = [
  "lazy_static",
  "libipld-core 0.14.0",
  "log",
- "multihash 0.16.3",
+ "multihash 0.18.0",
  "num-derive",
  "num-traits",
  "num_cpus",
@@ -2592,7 +2592,7 @@ name = "fvm_integration_tests"
 version = "3.0.0-alpha.3"
 dependencies = [
  "anyhow",
- "cid 0.8.6",
+ "cid 0.10.1",
  "fil_address_actor",
  "fil_builtin_actors_bundle",
  "fil_create_actor",
@@ -2618,7 +2618,7 @@ dependencies = [
  "hex",
  "lazy_static",
  "libsecp256k1",
- "multihash 0.16.3",
+ "multihash 0.18.0",
  "num-traits",
  "rand",
  "rand_chacha",
@@ -2636,7 +2636,7 @@ name = "fvm_ipld_amt"
 version = "0.5.1"
 dependencies = [
  "anyhow",
- "cid 0.8.6",
+ "cid 0.10.1",
  "criterion",
  "fvm_ipld_blockstore 0.1.1",
  "fvm_ipld_encoding 0.3.3",
@@ -2695,8 +2695,8 @@ name = "fvm_ipld_blockstore"
 version = "0.1.1"
 dependencies = [
  "anyhow",
- "cid 0.8.6",
- "multihash 0.16.3",
+ "cid 0.10.1",
+ "multihash 0.18.0",
 ]
 
 [[package]]
@@ -2715,7 +2715,7 @@ name = "fvm_ipld_car"
 version = "0.6.0"
 dependencies = [
  "async-std",
- "cid 0.8.6",
+ "cid 0.10.1",
  "futures",
  "fvm_ipld_blockstore 0.1.1",
  "fvm_ipld_encoding 0.3.3",
@@ -2762,9 +2762,9 @@ name = "fvm_ipld_encoding"
 version = "0.3.3"
 dependencies = [
  "anyhow",
- "cid 0.8.6",
+ "cid 0.10.1",
  "fvm_ipld_blockstore 0.1.1",
- "multihash 0.16.3",
+ "multihash 0.18.0",
  "serde",
  "serde_ipld_dagcbor",
  "serde_json",
@@ -2796,14 +2796,14 @@ version = "0.6.1"
 dependencies = [
  "anyhow",
  "byteorder",
- "cid 0.8.6",
+ "cid 0.10.1",
  "criterion",
  "forest_hash_utils",
  "fvm_ipld_blockstore 0.1.1",
  "fvm_ipld_encoding 0.3.3",
  "hex",
- "libipld-core 0.14.0",
- "multihash 0.16.3",
+ "libipld-core 0.16.0",
+ "multihash 0.18.0",
  "once_cell",
  "quickcheck",
  "quickcheck_macros",
@@ -2840,13 +2840,13 @@ version = "0.2.0"
 dependencies = [
  "anyhow",
  "byteorder",
- "cid 0.8.6",
+ "cid 0.10.1",
  "criterion",
  "forest_hash_utils",
  "fvm_ipld_blockstore 0.1.1",
  "fvm_ipld_encoding 0.3.3",
  "hex",
- "multihash 0.16.3",
+ "multihash 0.18.0",
  "once_cell",
  "quickcheck",
  "quickcheck_macros",
@@ -2987,7 +2987,7 @@ dependencies = [
  "blake2b_simd",
  "bls-signatures",
  "byteorder",
- "cid 0.8.6",
+ "cid 0.10.1",
  "data-encoding",
  "data-encoding-macro",
  "filecoin-proofs-api",
@@ -3443,6 +3443,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "libipld-core"
+version = "0.16.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5acd707e8d8b092e967b2af978ed84709eaded82b75effe6cb6f6cc797ef8158"
+dependencies = [
+ "anyhow",
+ "cid 0.10.1",
+ "core2",
+ "multibase",
+ "multihash 0.18.0",
+ "serde",
+ "thiserror",
+]
+
+[[package]]
 name = "libsecp256k1"
 version = "0.7.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3683,9 +3698,17 @@ version = "0.18.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "15e5d911412e631e1de11eb313e4dd71f73fd964401102aab23d6c8327c431ba"
 dependencies = [
+ "blake2b_simd",
+ "blake2s_simd 1.0.0",
+ "blake3",
  "core2",
+ "digest 0.10.6",
+ "multihash-derive",
+ "ripemd",
  "serde",
  "serde-big-array",
+ "sha2 0.10.6",
+ "sha3",
  "unsigned-varint",
 ]
 

@@ -3,12 +3,18 @@ name = "fvm_ipld_amt"
 description = "Sharded IPLD Array implementation."
 version = "0.5.1"
 license = "MIT OR Apache-2.0"
-authors = ["ChainSafe Systems <info@chainsafe.io>", "Protocol Labs", "Filecoin Core Devs"]
+authors = [
+  "ChainSafe Systems <info@chainsafe.io>",
+  "Protocol Labs",
+  "Filecoin Core Devs",
+]
 edition = "2021"
 repository = "https://github.com/filecoin-project/ref-fvm"
 
 [dependencies]
-cid = { version = "0.8.5", default-features = false, features = ["serde-codec"] }
+cid = { version = "0.10.1", default-features = false, features = [
+  "serde-codec",
+] }
 serde = { version = "1.0", features = ["derive"] }
 thiserror = "1.0"
 once_cell = "1.5"

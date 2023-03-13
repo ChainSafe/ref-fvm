@@ -1,7 +1,7 @@
 [package]
 name = "common_fuzz"
 version = "0.0.0"
-authors = [ "Protocol Labs", "Filecoin Core Devs"]
+authors = ["Protocol Labs", "Filecoin Core Devs"]
 publish = false
 edition = "2021"
 
@@ -15,10 +15,16 @@ ahash = "0.7.6"
 itertools = "0.10.3"
 rand = "0.8.5"
 
-cid = { version = "0.8.4", default-features = false, features = ["serde-codec", "arb", "std"] }
-multihash = { version = "0.16.2", features = ["sha2"]}
+cid = { version = "0.8.4", default-features = false, features = [
+  "serde-codec",
+  "arb",
+  "std",
+] }
+multihash = { version = "0.16.2", features = ["sha2"] }
 
-fvm_ipld_bitfield = { path = "../../../ipld/bitfield", features = ["enable-arbitrary"] }
+fvm_ipld_bitfield = { path = "../../../ipld/bitfield", features = [
+  "enable-arbitrary",
+] }
 fvm_ipld_encoding = { path = "../../../ipld/encoding" }
 fvm_shared = { path = "../../../shared", features = ["arb"] }
 serde = { version = "1", features = ["derive"] }

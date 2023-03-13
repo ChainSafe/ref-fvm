@@ -17,9 +17,15 @@ thiserror = "1.0.30"
 num-traits = "0.2"
 derive_builder = "0.12.0"
 num-derive = "0.3.3"
-cid = { version = "0.10.1", default-features = false, features = ["serde-codec"] }
-multihash = { version = "0.16.3", default-features = false }
-fvm_shared = { version = "3.0.0-alpha.20", path = "../shared", features = ["crypto"] }
+cid = { version = "0.10.1", default-features = false, features = [
+  "serde-codec",
+] }
+multihash = { version = "0.18.0", default-features = false, features = [
+  "ripemd",
+] }
+fvm_shared = { version = "3.0.0-alpha.20", path = "../shared", features = [
+  "crypto",
+] }
 fvm_ipld_hamt = { version = "0.6.1", path = "../ipld/hamt" }
 fvm_ipld_amt = { version = "0.5.1", path = "../ipld/amt" }
 fvm_ipld_blockstore = { version = "0.1.1", path = "../ipld/blockstore" }
@@ -52,7 +58,12 @@ fvm = { path = ".", features = ["testing"], default-features = false }
 [dependencies.wasmtime]
 version = "2.0.2"
 default-features = false
-features = ["cranelift", "pooling-allocator", "parallel-compilation", "memory-init-cow"]
+features = [
+  "cranelift",
+  "pooling-allocator",
+  "parallel-compilation",
+  "memory-init-cow",
+]
 
 [dependencies.wasmtime-environ]
 version = "2.0.2"
