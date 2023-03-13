@@ -605,7 +605,21 @@ checksum = "f6ed9c8b2d17acb8110c46f1da5bf4a696d745e1474a16db0cd2b49cd0249bf2"
 dependencies = [
  "core2",
  "multibase",
- "multihash",
+ "multihash 0.16.3",
+ "serde",
+ "serde_bytes",
+ "unsigned-varint",
+]
+
+[[package]]
+name = "cid"
+version = "0.10.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fd94671561e36e4e7de75f753f577edafb0e7c05d6e4547229fdf7938fbcd2c3"
+dependencies = [
+ "core2",
+ "multibase",
+ "multihash 0.18.0",
  "serde",
  "serde_bytes",
  "unsigned-varint",
@@ -1635,7 +1649,7 @@ dependencies = [
  "arbitrary",
  "blake2b_simd",
  "byteorder",
- "cid",
+ "cid 0.8.6",
  "derive-getters",
  "derive_builder",
  "derive_more",
@@ -1650,7 +1664,7 @@ dependencies = [
  "lazy_static",
  "log",
  "minstant",
- "multihash",
+ "multihash 0.16.3",
  "num-derive",
  "num-traits",
  "num_cpus",
@@ -1687,7 +1701,7 @@ name = "fvm_ipld_amt"
 version = "0.5.1"
 dependencies = [
  "anyhow",
- "cid",
+ "cid 0.10.1",
  "criterion",
  "fvm_ipld_blockstore 0.1.1",
  "fvm_ipld_encoding 0.3.3",
@@ -1704,7 +1718,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e84f16d6927ce342ef86bd20fcc2d5bd498ed33ae6d7a22fea7a1b453488ec88"
 dependencies = [
  "anyhow",
- "cid",
+ "cid 0.8.6",
  "fvm_ipld_blockstore 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "fvm_ipld_encoding 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "itertools 0.10.5",
@@ -1734,8 +1748,8 @@ name = "fvm_ipld_blockstore"
 version = "0.1.1"
 dependencies = [
  "anyhow",
- "cid",
- "multihash",
+ "cid 0.10.1",
+ "multihash 0.18.0",
 ]
 
 [[package]]
@@ -1745,8 +1759,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "688239a96199577f6705a3f9689abfd795f867f91f5847bc7e236017cc672df7"
 dependencies = [
  "anyhow",
- "cid",
- "multihash",
+ "cid 0.8.6",
+ "multihash 0.16.3",
 ]
 
 [[package]]
@@ -1754,7 +1768,7 @@ name = "fvm_ipld_car"
 version = "0.6.0"
 dependencies = [
  "async-std",
- "cid",
+ "cid 0.10.1",
  "futures",
  "fvm_ipld_blockstore 0.1.1",
  "fvm_ipld_encoding 0.3.3",
@@ -1768,9 +1782,9 @@ name = "fvm_ipld_encoding"
 version = "0.3.3"
 dependencies = [
  "anyhow",
- "cid",
+ "cid 0.10.1",
  "fvm_ipld_blockstore 0.1.1",
- "multihash",
+ "multihash 0.16.3",
  "serde",
  "serde_ipld_dagcbor",
  "serde_json",
@@ -1786,9 +1800,9 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f0816a2a6df4853de08a723d261110d56a121aa313bc570fe9d248f0a4bc5288"
 dependencies = [
  "anyhow",
- "cid",
+ "cid 0.8.6",
  "fvm_ipld_blockstore 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "multihash",
+ "multihash 0.16.3",
  "serde",
  "serde_ipld_dagcbor",
  "serde_repr",
@@ -1802,14 +1816,14 @@ version = "0.6.1"
 dependencies = [
  "anyhow",
  "byteorder",
- "cid",
+ "cid 0.10.1",
  "criterion",
  "forest_hash_utils",
  "fvm_ipld_blockstore 0.1.1",
  "fvm_ipld_encoding 0.3.3",
  "hex",
- "libipld-core",
- "multihash",
+ "libipld-core 0.16.0",
+ "multihash 0.18.0",
  "once_cell",
  "quickcheck",
  "quickcheck_macros",
@@ -1828,12 +1842,12 @@ checksum = "0c942494dde990aeac314311bde34c787be99cab7d0836397a75556cbaa2c3e7"
 dependencies = [
  "anyhow",
  "byteorder",
- "cid",
+ "cid 0.8.6",
  "forest_hash_utils",
  "fvm_ipld_blockstore 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "fvm_ipld_encoding 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "libipld-core",
- "multihash",
+ "libipld-core 0.14.0",
+ "multihash 0.16.3",
  "once_cell",
  "serde",
  "sha2 0.10.6",
@@ -1846,13 +1860,13 @@ version = "0.2.0"
 dependencies = [
  "anyhow",
  "byteorder",
- "cid",
+ "cid 0.10.1",
  "criterion",
  "forest_hash_utils",
  "fvm_ipld_blockstore 0.1.1",
  "fvm_ipld_encoding 0.3.3",
  "hex",
- "multihash",
+ "multihash 0.18.0",
  "once_cell",
  "quickcheck",
  "quickcheck_macros",
@@ -1867,8 +1881,8 @@ dependencies = [
 name = "fvm_sdk"
 version = "3.0.0"
 dependencies = [
- "cid",
- "fvm_ipld_encoding 0.3.3",
+ "cid 0.8.6",
+ "fvm_ipld_encoding 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "fvm_shared",
  "lazy_static",
  "log",
@@ -1886,7 +1900,7 @@ dependencies = [
  "blake2b_simd",
  "bls-signatures",
  "byteorder",
- "cid",
+ "cid 0.8.6",
  "data-encoding",
  "data-encoding-macro",
  "filecoin-proofs-api",
@@ -1895,7 +1909,7 @@ dependencies = [
  "lazy_static",
  "libsecp256k1",
  "log",
- "multihash",
+ "multihash 0.16.3",
  "num-bigint",
  "num-derive",
  "num-integer",
@@ -2238,10 +2252,25 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d44790246ec6b7314cba745992c23d479d018073e66d49ae40ae1b64e5dd8eb5"
 dependencies = [
  "anyhow",
- "cid",
+ "cid 0.8.6",
  "core2",
  "multibase",
- "multihash",
+ "multihash 0.16.3",
+ "serde",
+ "thiserror",
+]
+
+[[package]]
+name = "libipld-core"
+version = "0.16.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5acd707e8d8b092e967b2af978ed84709eaded82b75effe6cb6f6cc797ef8158"
+dependencies = [
+ "anyhow",
+ "cid 0.10.1",
+ "core2",
+ "multibase",
+ "multihash 0.18.0",
  "serde",
  "thiserror",
 ]
@@ -2458,12 +2487,29 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1c346cf9999c631f002d8f977c4eaeaa0e6386f16007202308d0b3757522c2cc"
 dependencies = [
  "blake2b_simd",
+ "core2",
+ "digest 0.10.6",
+ "multihash-derive",
+ "ripemd",
+ "serde",
+ "serde-big-array",
+ "sha2 0.10.6",
+ "sha3",
+ "unsigned-varint",
+]
+
+[[package]]
+name = "multihash"
+version = "0.18.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "15e5d911412e631e1de11eb313e4dd71f73fd964401102aab23d6c8327c431ba"
+dependencies = [
+ "blake2b_simd",
  "blake2s_simd 1.0.1",
  "blake3",
  "core2",
  "digest 0.10.6",
  "multihash-derive",
- "ripemd",
  "serde",
  "serde-big-array",
  "sha2 0.10.6",
@@ -3174,7 +3220,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c1e23de7a4a18dff77ab9531f279a882500b8cf3549fde044d4e10481b411f1e"
 dependencies = [
  "cbor4ii",
- "cid",
+ "cid 0.8.6",
  "scopeguard",
  "serde",
 ]
