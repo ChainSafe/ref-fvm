@@ -1,5 +1,7 @@
 // Copyright 2021-2023 Protocol Labs
 // SPDX-License-Identifier: Apache-2.0, MIT
+#![allow(dead_code)]
+
 use std::io::Write;
 use std::path::{Path, PathBuf};
 
@@ -78,7 +80,7 @@ lazy_static! {
     pub static ref OUTPUT_DIR: PathBuf = std::env::var("OUTPUT_DIR")
         .map(|d| Path::new(&d).to_path_buf())
         .ok().unwrap_or_else(|| {
-          Path::new(env!("CARGO_MANIFEST_DIR")).to_path_buf().join("measurements").join("out")
+          Path::new(env!("CARGO_MANIFEST_DIR")).to_path_buf().join("../calibration/measurements").join("out")
         });
 }
 
@@ -186,6 +188,32 @@ pub fn export_json<T: Serialize>(path: &PathBuf, values: &Vec<T>) -> std::io::Re
     }
 
     Ok(())
+}
+
+pub fn run_linear_regression(obs: &Vec<Obs>) -> Vec<RegressionResult> {
+    // split the observations by label into groups
+    use std::collections::HashMap;
+    let mut obs_by_label = HashMap::new();
+    for ob in obs {
+        obs_by_label
+            .entry(ob.label.to_owned())
+            .or_insert(Vec::new())
+            .push(Obs {
+                charge: ob.charge.to_string(),
+                label: ob.label.to_owned(),
+                elapsed_nanos: ob.elapsed_nanos,
+                variables: ob.variables.to_owned(),
+                compute_gas: ob.compute_gas,
+            });
+    }
+
+    // run linear regression on each item
+    let mut regs: Vec<RegressionResult> = Vec::new();
+    for entries in obs_by_label.values() {
+        regs.push(least_squares(entries[0].label.to_owned(), entries, 0));
+    }
+
+    regs
 }
 
 /// Linear regression between one of the variables and time.
