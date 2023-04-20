@@ -13,6 +13,8 @@ const SYSTEM_ACTOR_NAME: &str = "system";
 const PLACEHOLDER_ACTOR_NAME: &str = "placeholder";
 const EAM_ACTOR_NAME: &str = "eam";
 const ETHACCOUNT_ACTOR_NAME: &str = "ethaccount";
+const MINER_ACTOR_NAME: &str = "storageminer";
+const POWER_ACTOR_NAME: &str = "storagepower";
 
 /// A mapping of builtin actor CIDs to their respective types.
 pub struct Manifest {
@@ -22,6 +24,8 @@ pub struct Manifest {
     init_code: Cid,
     eam_code: Cid,
     ethaccount_code: Cid,
+    miner_code: Cid,
+    power_code: Cid,
 
     by_id: HashMap<u32, Cid>,
     by_code: HashMap<Cid, u32>,
@@ -124,6 +128,14 @@ impl Manifest {
             .get(ETHACCOUNT_ACTOR_NAME)
             .context("manifest missing ethaccount actor")?;
 
+        let miner_code = *by_name
+            .get(MINER_ACTOR_NAME)
+            .context("manifest missing miner actor")?;
+
+        let power_code = *by_name
+            .get(POWER_ACTOR_NAME)
+            .context("manifest missing power actor")?;
+
         Ok(Self {
             account_code,
             system_code,
@@ -131,6 +143,8 @@ impl Manifest {
             placeholder_code,
             eam_code,
             ethaccount_code,
+            miner_code,
+            power_code,
             by_id,
             by_code,
         })
@@ -193,5 +207,15 @@ impl Manifest {
     /// Returns the code CID for the Ethereum Account actor.
     pub fn get_ethaccount_code(&self) -> &Cid {
         &self.ethaccount_code
+    }
+
+    /// Returns the code CID for the miner actor.
+    pub fn get_miner_code(&self) -> &Cid {
+        &self.miner_code
+    }
+
+    /// Returns the code CID for the power actor.
+    pub fn get_power_code(&self) -> &Cid {
+        &self.power_code
     }
 }
